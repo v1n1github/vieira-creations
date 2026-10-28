@@ -2,193 +2,194 @@
 
 > Documento vivo, compartilhado entre **Vinicius** (dono do projeto), **Claude** e **Codex**.
 > Objetivo: alinhar o que vamos construir, como, e quem faz o quê, antes de escrever código.
-> Status: **rascunho v0.2 (28/10/2026)** — revisão do Claude sobre a v0.1. Pontos marcados com ⚠️ ainda precisam de confirmação do Vinicius (seção 9).
+> Status: **rascunho v0.3 (28/10/2026)** — incorpora a revisão do Codex (Issue #1 e comentário no PR #2), a identidade VI e a divisão dos serviços em 6 peças. Itens marcados com ⚠️ aguardam o Vinicius (seção 9).
 
 ---
 
 ## 1. Visão geral
 
-A Vieira Creations é um **estúdio de inteligência criativa**: une criação humana (direção, roteiro, edição) com ferramentas de IA para entregar sites, conteúdo e automação para marcas e pequenos negócios.
+A Vieira Creations é um **estúdio de inteligência criativa**: une criação (direção, roteiro, design, edição) com tecnologia e IA para entregar marca, conteúdo, sites e automação para marcas e pequenos negócios.
 
 O website tem dois trabalhos ao mesmo tempo:
 
-1. **Ser a prova.** O próprio site é o case nº 1 do estúdio. Quem visita precisa sentir, nos primeiros 5 segundos, que este estúdio faz sites e vídeos de nível premiado. Tudo o que vendemos (site, vídeo com IA, agente de IA) deve aparecer *funcionando* no site, não só descrito.
-2. **Converter.** Transformar visitas (vindas principalmente de Instagram/TikTok, no celular) em conversas no WhatsApp, reuniões agendadas e e-mails capturados.
+1. **Ser a prova.** O próprio site é o case nº 1. É uma **experiência imersiva e cinematográfica**, conduzida pelo scroll, que demonstra a capacidade do estúdio enquanto o visitante navega.
+2. **Converter.** Transformar visitas (principalmente do Instagram/TikTok, no celular) em conversas no WhatsApp e reuniões agendadas. A experiência nunca impede o acesso direto a "Trabalho" e "Contato".
 
-**Critério de sucesso do MVP:**
-- Site no ar com domínio próprio, em **inglês e português**.
-- Pelo menos **4 cases** (ver seção 3.3) com página de detalhe.
-- Lead chegando por WhatsApp, formulário e agendamento, com rastreamento de origem (UTM).
-- Lighthouse ≥ 90 em todas as categorias **no celular**, mesmo com vídeo no hero (meta: 95+).
+**Critério de sucesso do lançamento:**
+- Site no ar com domínio próprio.
+- Viagem imersiva completa, com alternativa para movimento reduzido e sem WebGL.
+- Pelo menos 4 cases com página de detalhe.
+- Lead chegando por WhatsApp, formulário e agendamento, com origem (UTM).
+- Performance medida em aparelhos de referência (ver seção 4.2), além do Lighthouse ≥ 90 no celular.
 
-## 2. Serviços e público
+## 2. Marca
 
-### 2.1 O que o estúdio vende
+### 2.1 Identidade VI (registrada)
 
-| Linha de serviço | Exemplos de entrega |
-|---|---|
-| **Websites & landing pages** | Site novo, redesign de site existente, landing page de campanha, páginas de venda de infoproduto |
-| **Edição de vídeo para redes** | Pacote mensal de Reels/TikTok/Shorts, carrosséis, versões PT→EN de vídeos existentes |
-| **Vídeo e séries com IA** | Anúncios com IA, vídeos cinematográficos, personagens de IA (sempre identificados como IA), séries para redes |
-| **Automação & agentes de IA** | Funil "comente a palavra → DM → landing page → e-mail", chatbots de atendimento/qualificação, automações de agenda |
+- **Nome:** Vieira Creations — ⚠️ provisório até confirmação final.
+- **Símbolo VI:** **Vi**eira + "**vi**" (de enxergar) + **VI** romano (seis).
+- **Seis peças:** o V tem 3 (braço esquerdo, braço direito, base) e o I tem 3 blocos.
+- **Paleta:** preto `#0B0B0B`, marfim `#F4EFE6`, laranja `#FF4D24` como acento único.
+- **Versão "REC":** bloco de cima do I em laranja, como a luz de gravação de uma câmera. Proposta como assinatura digital (site, redes, vídeos); a versão toda em marfim fica para usos formais.
+- **Master vetorial:** `brand/` (PR #3), com logo, símbolo, versão pequena, ícones e guia de uso.
+- **Pendente:** aprovação final da animação de 5 s com som.
 
-### 2.2 Público-alvo
+### 2.2 V = Visão, I = Inteligência
 
-- **Pequenos negócios e profissionais autônomos no Reino Unido** — com forte presença de profissionais brasileiros (estética, beleza, saúde, serviços), mas **sem se limitar a um nicho**.
+A divisão do símbolo explica o negócio:
+
+- **V — Visão:** o lado criativo.
+- **I — Inteligência:** o lado técnico.
+- Juntos: **inteligência criativa**.
+
+## 3. Serviços — um por peça do VI
+
+| Peça | Grupo | Serviço | Exemplos de entrega | Lançamento |
+|---|---|---|---|---|
+| V · braço esquerdo | Visão | **Identidade & Marca** | Logo, paleta, guia de marca, kit para redes | Complemento |
+| V · braço direito | Visão | **Vídeo com IA** | Anúncios com IA, vídeos cinematográficos, séries e personagens de IA (sempre identificados como IA) | ⭐ Carro-chefe |
+| V · base | Visão | **Conteúdo para Redes** | Pacote mensal de Reels/TikTok/Shorts, carrosséis, versões PT→EN | ⭐ Carro-chefe |
+| I · bloco 1 | Inteligência | **Websites & Landing Pages** | Site novo, redesign, landing page de campanha | ⭐ Carro-chefe |
+| I · bloco 2 | Inteligência | **Automação & Funis** | "Comente a palavra → DM → página → e-mail", agendamentos automáticos | Complemento |
+| I · bloco 3 | Inteligência | **Agentes de IA** | Atendimento e qualificação de clientes 24h | Complemento |
+
+- **Carro-chefe:** destaque no site, pacotes com preço "a partir de" e oferta de lançamento.
+- **Complemento:** aparece no site com a mesma qualidade, mas é vendido junto de um carro-chefe até o estúdio ter estrutura para entregá-lo sozinho.
+- ⚠️ A ordem das peças (qual serviço fica em qual posição) é uma proposta para discussão.
+
+### 3.1 Público-alvo
+
+- Pequenos negócios e profissionais autônomos no Reino Unido, com forte presença de profissionais brasileiros (estética, beleza, saúde, serviços), **sem se limitar a um nicho**.
 - Marcas brasileiras que querem conteúdo de nível internacional.
-- Chegam pelo celular, via Instagram/TikTok/indicação. Muitos nunca contrataram um estúdio antes: o site precisa ser direto sobre **o que é, quanto custa (a partir de) e como começar**.
+- Muitos nunca contrataram um estúdio: o site precisa deixar claro **o que é, quanto custa (a partir de) e como começar**.
 
-## 3. Escopo do MVP
+## 4. A experiência
 
-### 3.1 Páginas
+### 4.1 A viagem pelo scroll
 
-| Página | Conteúdo | Prioridade |
-|---|---|---|
-| **Home** | Hero com filme curto feito pelo estúdio (Higgsfield), frase de posicionamento, slider "antes/depois" (vídeo cru de celular → versão final com IA), cases em destaque, 4 linhas de serviço, prova social, CTA WhatsApp/agendar | P0 |
-| **Trabalho (cases)** | Grade filtrável por linha de serviço; página de detalhe por case: desafio → solução → resultado, galeria/vídeo, ferramentas usadas | P0 |
-| **Serviços** | Uma landing page por linha de serviço (4), cada uma com processo, entregáveis, **preço "a partir de"**, FAQ e CTA. Servem também como destino de anúncios | P0 |
-| **Pacotes** | Comparação simples dos pacotes mensais (ex.: edição para redes) com oferta de lançamento | P0 |
-| **Contato / Começar um projeto** | Formulário curto em etapas (tipo de projeto → orçamento → contato), botão WhatsApp, agendamento (Cal.com/Calendly) | P0 |
-| **Sobre** | História do estúdio, como trabalhamos com IA de forma responsável, quem está por trás | P1 |
-| **Legal** | Política de privacidade e cookies (UK GDPR / LGPD), termos | P0 |
-| **Blog / Aprenda IA** | Artigos e bastidores; base para o futuro infoproduto do estúdio | P2 (pós-MVP) |
+Narrativa (hipótese criativa, a validar no storyboard):
 
-### 3.2 O "fator uau" (o que torna o site excepcional)
+**VI se monta** → **câmera** → **entra pela lente** → **set / mundos de IA** → **interface de um site** → **automação conectando tudo** → **volta ao VI**.
 
-1. **Hero em vídeo cinematográfico** produzido pelo estúdio, otimizado (poster, AV1/H.264, streaming adaptativo), sem derrubar a nota de performance.
-2. **Transições entre páginas conectadas** (o elemento clicado "voa" para a próxima página) com View Transitions API + GSAP, e rolagem suave.
-3. **Slider antes/depois** de vídeo: demonstra o serviço de IA em segundos.
-4. **Agente de IA no site** que conversa com o visitante, entende a necessidade, sugere um pacote e passa o lead qualificado para o WhatsApp/e-mail — é ao mesmo tempo atendimento e demonstração ao vivo do serviço de agentes.
-5. **Performance como argumento de venda:** página "como este site foi feito" mostrando as notas do Lighthouse.
-6. Acessibilidade de verdade: tudo funciona sem animação (`prefers-reduced-motion`) e por teclado.
+Princípios:
+- **A viagem é o menu de serviços.** Cada capítulo apresenta serviços do VI, com um ponto de leitura curto e um CTA. As 6 peças podem virar os 6 capítulos (⚠️ a definir no storyboard).
+- **O logo é a navegação.** Um menu em forma de VI: cada peça é um serviço e acende em laranja ao passar o dedo ou o mouse.
+- **Ritmo rápido.** Nada de vinheta lenta. Som opcional, nunca automático.
+- **Atalhos sempre visíveis:** "Trabalho" e "Contato" fixos; quem não quer a viagem chega ao conteúdo em um toque.
+- **Acessível:** conteúdo e navegação existem fora do canvas; alternativa completa com `prefers-reduced-motion` e sem WebGL; teclado e toque.
 
-### 3.3 Portfólio — estratégia para não depender de clientes antigos
+### 4.2 Abordagem técnica (hipótese para a prova técnica)
 
-O estúdio está começando, então a meta de "6 projetos prontos" da v0.1 é o maior risco do plano. Proposta:
+Comparar no spike, cena por cena:
+- **Híbrida (hipótese principal):** cenas cinematográficas pré-renderizadas, produzidas pelo Vinicius no Higgsfield, controladas pelo scroll (sequência de imagens ou vídeo com scrub). 3D em tempo real só onde a interação é o ponto, como a montagem das 6 peças do VI.
+- **3D em tempo real** (Three.js / React Three Fiber) na viagem inteira.
+
+Metas propostas (a acordar, ainda não medidas): 60 fps no desktop de referência e 30 fps estáveis no celular de referência; medir peso, memória e carregamento antes de escalar a narrativa.
+
+### 4.3 Portfólio
 
 | # | Case | Situação |
 |---|---|---|
-| 1 | **O próprio site da Vieira Creations** (com página de bastidores) | Construído neste repositório |
-| 2 | **Site de cliente piloto (estética, Londres)** — redesign com transições e funil de infoproduto | Já existe uma versão; será finalizado em paralelo |
-| 3 | **Vídeos/série de redes sociais do cliente piloto** | Autorização obtida; publicar só quando a estrutura completa estiver no ar |
-| 4–6 | **Projetos-conceito** para marcas fictícias (ex.: marca de produto de luxo, restaurante, app), cada um mostrando uma linha de serviço | Produzir na fase 2–3; **sempre identificados como "Conceito"** |
+| 1 | O próprio site da Vieira Creations (com página de bastidores) | Este repositório |
+| 2 | Site de cliente piloto (estética, Londres) | Versão existente; será finalizado em paralelo |
+| 3 | Vídeos/série de redes do cliente piloto | Autorizado; publicar só com a estrutura completa no ar |
+| 4–6 | Projetos-conceito para marcas fictícias, um por serviço carro-chefe | Produzir nas fases 1–3; **sempre identificados como "Conceito"** |
 
-Projetos-conceito são prática comum em estúdios novos e são honestos desde que rotulados.
+Não inventar trabalhos, clientes ou resultados.
 
-### 3.4 Funcionalidades
+## 5. O que entra no lançamento e o que vem depois
 
-- Mobile first, tema escuro como padrão (combina com vídeo), claro opcional.
-- **Bilíngue desde o início (EN padrão + PT)** com rotas `/en` e `/pt`, `hreflang` e textos separados — adicionar idioma depois dá muito retrabalho.
-- Vídeos fora do git, servidos por plataforma de vídeo (lazy loading, poster, formatos modernos).
-- Formulário com anti-spam (Turnstile) e envio por e-mail; lead também gravado (planilha/DB simples) com UTM de origem.
-- Captura de e-mail com isca (ex.: guia gratuito) para alimentar o funil das redes sociais.
-- SEO: metadados, Open Graph por página, sitemap.xml, robots.txt, dados estruturados (Organization, LocalBusiness, Service, CreativeWork, FAQPage).
-- Analytics respeitando consentimento de cookies (Plausible ou GA4 com banner).
+### 5.1 Lançamento
 
-### 3.5 Fora do escopo do MVP
+- Viagem imersiva com os 6 serviços e o menu VI.
+- Cases (seção 4.3).
+- Pacotes com preço "a partir de" para os 3 carros-chefe.
+- Contato: WhatsApp, formulário curto e agendamento.
+- Política de privacidade e cookies (UK GDPR / LGPD).
+- SEO base: metadados, Open Graph, sitemap, dados estruturados.
+- Estrutura bilíngue preparada; ⚠️ idioma de lançamento (EN, ou EN + PT) a decidir.
 
-- Loja / pagamento online (a venda de infoprodutos fica para a fase 6).
-- Área de cliente com login.
-- Blog (fase 2).
+### 5.2 Depois (fase 6, em ordem sugerida)
 
-## 4. Stack proposta (para discussão)
+1. Versão em português (se não entrar no lançamento).
+2. Agente de IA no site, que qualifica o visitante e sugere um pacote.
+3. Captura de e-mail com material gratuito, ligada ao funil das redes.
+4. Landing pages separadas por serviço, para anúncios.
+5. Blog / "Aprenda IA".
+6. Venda de infoprodutos (checkout).
 
-| Camada | Proposta | Alternativas | Por quê |
-|---|---|---|---|
-| Framework | **Next.js (App Router) + TypeScript** | Astro | Ecossistema grande, ótimo para SEO, imagens e rotas de API (agente, formulário); Codex e Claude dominam bem |
-| Estilo | **Tailwind CSS** + design tokens | CSS Modules | Rápido de iterar, consistente |
-| Animações | **GSAP (ScrollTrigger) + Lenis + View Transitions API** | Framer Motion | GSAP é o padrão de sites premiados e hoje é gratuito, incluindo plugins; dá controle fino de timeline para transições cinematográficas |
-| i18n | `next-intl` | — | Rotas por idioma e mensagens tipadas |
-| Conteúdo | **MDX/JSON no repositório** no MVP | Sanity, Payload | Zero custo; o Claude/Codex editam a pedido do Vinicius. CMS só se ele quiser editar sozinho |
-| Vídeo | **Mux** ou Cloudinary | Bunny Stream | Streaming adaptativo, poster automático; vídeo pesado não fica no git |
-| Formulário / e-mail | Route handler + Resend + Turnstile | Formspree | Simples e barato |
-| Agente de IA | Route handler chamando a API do Claude, com prompt fixo sobre serviços e pacotes, limite de uso | — | Demonstra o serviço de agentes; custo controlado |
-| Agendamento | Cal.com (embed) | Calendly | Gratuito, bonito, embutível |
-| Hospedagem | **Vercel** | Netlify, Cloudflare Pages | Deploy automático por PR com preview |
-| Qualidade | ESLint, Prettier, Playwright (smoke tests), Lighthouse CI (mobile) | — | Garante que nada quebre entre agentes |
+Nada é cortado: só muda a ordem, para o site entrar no ar mais cedo.
 
-> A stack final depende também da auditoria do site do cliente piloto (seção 6): se ele já usa uma stack sólida, vale adotá-la para reaproveitar mais.
-> Se o Codex ou o Vinicius preferirem outra stack, registrar a decisão na seção 8.
+## 6. Stack (proposta — decisão #2 só depois da prova técnica)
 
-## 5. Estrutura de repositório sugerida
-
-```
-vieira-creations/
-├── AGENTS.md            # instruções para agentes (Codex, Claude)
-├── PLAN.md              # este documento
-├── docs/
-│   └── decisions/       # ADRs curtos: 0001-stack.md, 0002-i18n.md...
-├── content/
-│   ├── cases/           # um .mdx por case, com versões en/pt
-│   └── services/        # um .mdx por linha de serviço
-├── messages/            # textos de interface: en.json, pt.json
-├── public/              # imagens leves, favicon, og-image
-└── src/
-    ├── app/[locale]/    # rotas: /, /work, /work/[slug], /services/[slug], /pricing, /about, /contact
-    ├── components/
-    └── lib/
-```
-
-## 6. Fases e marcos
-
-O prazo da v0.1 (4–6 semanas) é longo para um estúdio que precisa começar a gerar clientes. Proposta mais curta, com o site do cliente piloto avançando em paralelo.
-
-**Atalho decidido pelo Vinicius:** o site da Vieira Creations será construído **reaproveitando a estrutura do site do cliente piloto** (componentes, layout, formulário, SEO, configuração) no que for possível. O visual e a identidade serão próprios do estúdio. Isso também cria uma **base reutilizável** para os próximos sites de clientes — cada projeto deixa o seguinte mais rápido.
-
-| Fase | Entregas | Estimativa |
+| Camada | Proposta | Observação |
 |---|---|---|
-| 0. Descoberta | Auditoria do código do site do cliente piloto (stack, o que reaproveitar, o que refazer), respostas da seção 9, nome/domínio confirmados, 3 referências visuais, paleta e tipografia | 1–2 dias |
-| 1. Fundação | Importar a estrutura reaproveitável do site do cliente piloto; Next.js + Tailwind + i18n + lint + CI + preview na Vercel; design tokens; layout base com transições | 2 dias |
-| 2. Home + Contato | Home completa (hero de vídeo pode começar com placeholder), contato com WhatsApp e agendamento — **já dá para divulgar** | 4–5 dias |
-| 3. Serviços + Cases | 4 landing pages de serviço, página de pacotes, cases 1–2, primeiro projeto-conceito | 1 semana |
-| 4. Uau + Polimento | Agente de IA, slider antes/depois, vídeo final do hero, performance, acessibilidade (WCAG 2.1 AA), testes em celular | 4–5 dias |
-| 5. Lançamento | Domínio, analytics, política de privacidade, checklist final | 1 dia |
-| 6. Pós-lançamento | Blog, mais cases, infoproduto/checkout, CMS se necessário, melhorias por dados | contínuo |
+| Framework | Next.js (App Router) + TypeScript | Candidato; confirmar após auditoria do site piloto e spike |
+| Estilo | Tailwind CSS + design tokens da marca | |
+| 3D | Three.js / React Three Fiber | Só nas cenas que exigirem interação real |
+| Timeline de scroll e câmera | GSAP (ScrollTrigger) + Lenis | Motion/CSS só para interações de UI; nunca duas bibliotecas controlando a mesma propriedade |
+| Transições entre páginas | View Transitions API | |
+| i18n | next-intl | |
+| Conteúdo | MDX/JSON no repositório | Edição via Claude/Codex; CMS só se o Vinicius quiser editar sozinho |
+| Vídeo | Mux, Cloudinary ou Bunny Stream | Mídia pesada fora do git |
+| Formulário | Route handler + Resend + Turnstile | Reaproveitar do site piloto se possível |
+| Agendamento | Cal.com (embed) | |
+| Hospedagem | Vercel | Preview por PR |
+| Qualidade | ESLint, Prettier, Playwright, Lighthouse CI (mobile) | Mais medição de fps em aparelhos reais |
 
-## 7. Como os três vão trabalhar juntos
+Verificar versões e licenças na documentação oficial antes de adotar dependências.
 
-- **Vinicius** decide: identidade visual, conteúdo, preços, prioridades, aprovação de cada PR.
-- **Claude** e **Codex** implementam via **branches + Pull Requests**; nada vai direto para `main`.
-- Cada tarefa vira uma **Issue** no GitHub com critério de aceite. O agente que pegar a issue comenta "assumindo" para evitar trabalho duplicado.
-- Um agente pode revisar o PR do outro; o merge final é sempre do Vinicius.
-- Decisões importantes viram um arquivo curto em `docs/decisions/` e uma linha na seção 8.
+**Reaproveitamento do site piloto:** formulário, configuração, SEO e estrutura de conteúdo, após auditoria. Layout, composição e navegação são novos, com a identidade do estúdio. A economia de prazo só conta depois da auditoria.
 
-**Proposta de divisão (a discutir):**
-- **Codex:** fundação (fase 1), componentes base, CI e deploy.
-- **Claude:** sistema de animação/transições, textos EN/PT e SEO, estrutura de conteúdo dos cases e serviços, agente de IA, revisão de acessibilidade e performance.
+## 7. Fases
 
-## 8. Registro de decisões
-
-| # | Data | Decisão | Quem decidiu |
+| Fase | Entregas | Quem | Estimativa |
 |---|---|---|---|
-| 1 | 28/10/2026 | Repositório `vieira-creations` no GitHub do Vinicius com este plano | Vinicius |
-| 2 | — | Stack (seção 4) | pendente |
-| 3 | — | Nome final do estúdio e domínio | pendente ⚠️ |
-| 4 | — | Bilíngue EN/PT no MVP | proposto (v0.2) |
-| 5 | 28/10/2026 | Reaproveitar a estrutura do site do cliente piloto para acelerar o site do estúdio | Vinicius |
+| 0. Inventário e decisões | Assets e cases disponíveis, auditoria do site piloto, idioma de lançamento, domínio, aprovação do logo | Vinicius + Codex/Claude | 1–2 dias |
+| 1. Storyboard + animatic | Storyboard desktop/mobile dos capítulos, com pontos de leitura e CTAs; animatic com ritmo | Claude (roteiro, textos, conversão), Vinicius (aprovação e cenas no Higgsfield) | 3–4 dias |
+| 2. Prova técnica | Trecho VI → câmera → lente → primeiro mundo navegável; híbrido × 3D; métricas. Em paralelo: fundação (projeto, lint, CI, preview) | Codex (spike e fundação), Claude (revisão de clareza e acessibilidade) | 5–7 dias |
+| **Portão de decisão** | Decisão #2 (stack e arquitetura) registrada em `docs/decisions/` | Vinicius | — |
+| 3. Construção | Viagem completa, menu VI, cases, pacotes, contato, SEO | Codex + Claude | 1,5–2 semanas |
+| 4. Polimento e lançamento | Performance, movimento reduzido, alternativa sem WebGL, testes em celular, domínio, analytics | ambos | 4–5 dias |
+| 5. Pós-lançamento | Itens da seção 5.2 | — | contínuo |
+
+Meta: lançamento em cerca de 4 semanas, a confirmar depois da prova técnica e do inventário de assets.
+
+## 8. Como os três vão trabalhar juntos
+
+- **Vinicius** decide: identidade, conteúdo, preços, prioridades e aprovação de cada PR.
+- **Claude** e **Codex** implementam via branches + Pull Requests; nada vai direto para `main`.
+- Cada tarefa vira uma Issue com critério de aceite; quem assumir comenta "assumindo".
+- Revisão cruzada: Claude avalia clareza, conversão e acessibilidade do que o Codex faz; Codex avalia viabilidade técnica e custo dos assets do que o Claude propõe.
+- Merge final sempre do Vinicius. Decisões importantes viram arquivo em `docs/decisions/` e linha na seção 10.
 
 ## 9. Perguntas em aberto para o Vinicius
 
-Já respondidas (v0.2, a partir das conversas com o Vinicius — confirmar):
+1. ⚠️ **Nome:** "Vieira Creations" é final (também para renomear a empresa)? Domínio disponível?
+2. ⚠️ **Idioma de lançamento:** só inglês, ou inglês + português?
+3. **Serviços:** concorda com os 6 serviços, a ordem das peças e os 3 carros-chefe?
+4. **Preços "a partir de"** dos carros-chefe e oferta de lançamento.
+5. **Inventário:** o que já existe pronto para mostrar (vídeos, imagens, site piloto)?
+6. **Código do site piloto:** em que stack foi feito e onde está?
+7. **Referências:** 2–3 sites que você admira, e o que gosta neles.
+8. **Orçamento mensal** para serviços pagos (hospedagem, vídeo, e-mail).
+9. **Repositório público:** tornar privado até o lançamento?
 
-- ✅ **O que o estúdio faz:** sites e landing pages, edição de vídeo para redes, vídeo e séries com IA, automação e agentes de IA.
-- ✅ **Onde estão os clientes:** Reino Unido (muitos brasileiros) e Brasil → site em EN e PT, preços em £.
-- ✅ **Contato:** WhatsApp como canal principal, mais formulário e agendamento.
-- ✅ **Edição de conteúdo:** no MVP, por pedido ao Claude/Codex; CMS só depois.
+## 10. Registro de decisões
 
-Ainda em aberto:
+| # | Data | Decisão | Quem decidiu |
+|---|---|---|---|
+| 1 | 28/10/2026 | Repositório `vieira-creations` com este plano | Vinicius |
+| 2 | — | Stack e arquitetura (após prova técnica) | pendente |
+| 3 | — | Nome final e domínio | pendente ⚠️ |
+| 4 | 28/10/2026 | Reaproveitar infraestrutura do site do cliente piloto, sem limitar o desenho | Vinicius |
+| 5 | 28/10/2026 | Experiência imersiva pelo scroll é o centro do site | Vinicius (via Codex) |
+| 6 | 28/10/2026 | Logo VI de 6 peças, versão 2 (marfim, blocos retos), master vetorial no PR #3 | Vinicius |
+| 7 | — | 6 serviços mapeados nas 6 peças do VI (V = Visão, I = Inteligência) | proposto (v0.3) |
+| 8 | — | Lançamento enxuto + fase 6 (seção 5) | proposto (v0.3) |
 
-1. ⚠️ **Nome:** "Vieira Creations" é o nome final do estúdio (e da empresa a ser renomeada)? O domínio está disponível/registrado?
-2. **Identidade visual:** já existe logo, cores, fontes? Se não, criamos na fase 0.
-3. **Referências:** 2–3 sites de que você gosta (e o que gosta neles).
-4. **Preços "a partir de"** que podem aparecer no site para cada linha de serviço, e qual a oferta de lançamento.
-5. **Agente de IA no site:** ok ter um custo pequeno e variável de API por conversa?
-6. **Orçamento mensal** para serviços pagos (hospedagem, vídeo, e-mail).
-7. **Código do site do cliente piloto:** em que stack ele foi feito e onde está (pasta no Mac / outro repositório)? Precisamos dele no repo (ou acessível) para a auditoria da fase 0. Se a stack for diferente de Next.js, decidimos se migramos ou se adotamos a stack dele.
-8. **Privacidade do repositório:** o repo está **público**. Como você ainda não quer divulgar o estúdio, sugerimos torná-lo privado até o lançamento.
+## 11. Próximos passos imediatos
 
-## 10. Próximos passos imediatos
-
-1. Vinicius revisa este PR e responde a seção 9 (no arquivo, numa Issue ou no chat).
-2. Codex lê o plano e o `AGENTS.md` e comenta: concorda com a stack? propõe mudanças?
-3. Fechamos as decisões #2 e #3 e abrimos as Issues da fase 1.
+1. Vinicius discute a v0.3 com o Codex e responde a seção 9.
+2. Vinicius aprova o logo (merge do PR #3).
+3. Fechamos as decisões #3, #7 e #8 e abrimos as Issues das fases 0 e 1.
