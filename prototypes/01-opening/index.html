@@ -1,0 +1,431 @@
+<title>Vieira Creations Opening</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400;1,6..96,500&family=Montserrat:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one pinned cinematic stage (the scroll journey), then plain reading sections.
+   Single dark look by choice: the brand is black, ivory and one orange accent. */
+:root {
+  --black: #0B0B0B;
+  --ink-2: #151413;
+  --ivory: #F4EFE6;
+  --ivory-dim: #A8A298;
+  --line: #2A2826;
+  --rec: #FF4D24;
+  --f-display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --f-ui: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+html, body { background: var(--black); color: var(--ivory); }
+body { font-family: var(--f-ui); font-size: 15px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--black); }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--rec); outline-offset: 3px; border-radius: 2px; }
+
+.gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* Header */
+.top { position: fixed; left: 0; right: 0; top: env(safe-area-inset-top, 0px); z-index: 20; background: linear-gradient(var(--black), rgba(11,11,11,0)); }
+.top-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; max-width: 1200px; margin: 0 auto; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 500; font-size: 11px; letter-spacing: .28em; }
+.brand svg { width: 34px; height: auto; display: block; }
+.nav { display: flex; gap: 22px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+.nav a { text-decoration: none; color: var(--ivory-dim); transition: color .2s; }
+.nav a:hover, .nav a.cta { color: var(--ivory); }
+.nav a.cta::before { content: ""; display: inline-block; width: 7px; height: 7px; background: var(--rec); margin-right: 8px; vertical-align: 1px; }
+@media (max-width: 520px) { .brand span { display: none; } .nav { gap: 16px; font-size: 11px; } }
+
+/* Journey */
+.journey { position: relative; height: 520vh; }
+.stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.scene-wrap { position: absolute; inset: 56px 0 0; }
+#scene { will-change: transform; }
+#scene { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.pc { }
+.camera * { fill: none; stroke: var(--ivory); stroke-width: 2; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
+.camera .fine { stroke: var(--ivory-dim); stroke-width: 1; }
+.camera text { fill: var(--ivory-dim); stroke: none; font-family: var(--f-mono); font-size: 11px; letter-spacing: .12em; }
+.camera .glass { stroke: none; }
+
+/* Load-in: pieces settle into the VI */
+@keyframes settle { from { transform: translate(var(--fx), var(--fy)); opacity: 0; } to { transform: none; opacity: 1; } }
+.pc-in { animation: settle .9s cubic-bezier(.2,.8,.2,1) both; animation-delay: var(--d); }
+
+/* Intro panel: usable before any animation */
+.intro { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; max-width: 1200px; margin: 0 auto; padding-block: 0 34px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px 48px; align-items: end; }
+.intro h1 { font-family: var(--f-display); font-style: italic; font-weight: 400; font-size: clamp(30px, 5.2vw, 60px); line-height: 1.04; margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+.intro h1 em { font-style: italic; color: var(--ivory-dim); }
+.intro p.lead { margin: 12px 0 0; color: var(--ivory-dim); max-width: 46ch; font-size: 14px; }
+.menu { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; min-width: 0; }
+.menu h2 { margin: 0 0 8px; font-size: 10px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--ivory-dim); }
+.menu h2 b { color: var(--ivory); font-weight: 600; }
+.menu ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.menu a { display: flex; align-items: center; gap: 10px; padding: 7px 0; text-decoration: none; font-size: 14px; border-bottom: 1px solid var(--line); }
+.menu a i { width: 9px; height: 9px; flex: none; background: var(--line); transition: background .2s; }
+.menu a:hover i, .menu a:focus-visible i, .menu a.on i { background: var(--rec); }
+.menu a small { margin-left: auto; font-family: var(--f-mono); font-size: 10px; color: var(--ivory-dim); letter-spacing: .08em; }
+.hint { position: absolute; left: 50%; bottom: 6px; transform: translateX(-50%); font-family: var(--f-mono); font-size: 10px; letter-spacing: .2em; color: var(--ivory-dim); text-transform: uppercase; }
+@media (max-width: 760px) {
+  .intro { grid-template-columns: 1fr; gap: 16px; padding-block: 0 34px; }
+  .menu { gap: 14px; }
+  .menu a { padding: 5px 0; font-size: 13px; gap: 8px; }
+  .menu a small { display: none; }
+}
+@media (max-width: 520px) { .intro p.lead { font-size: 13px; margin-top: 8px; } }
+@media (max-height: 700px) { .intro p.lead { display: none; } }
+
+/* Viewfinder HUD */
+.hud { position: absolute; inset: 64px max(16px, env(safe-area-inset-right, 0px)) 18px max(16px, env(safe-area-inset-left, 0px)); pointer-events: none; opacity: 0; font-family: var(--f-mono); font-size: 11px; letter-spacing: .12em; color: var(--ivory); z-index: 4; }
+.hud .c { position: absolute; width: 22px; height: 22px; border: 0 solid var(--ivory-dim); }
+.hud .tl { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; }
+.hud .tr { top: 0; right: 0; border-top-width: 1px; border-right-width: 1px; }
+.hud .bl { bottom: 0; left: 0; border-bottom-width: 1px; border-left-width: 1px; }
+.hud .br { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; }
+.hud .rec { position: absolute; top: 8px; left: 32px; display: flex; gap: 8px; align-items: center; }
+.hud .rec i { width: 8px; height: 8px; border-radius: 50%; background: var(--rec); }
+.hud .tc { position: absolute; top: 8px; right: 32px; font-variant-numeric: tabular-nums; }
+.hud .meta { position: absolute; bottom: 8px; left: 32px; color: var(--ivory-dim); }
+.hud .cap { position: absolute; bottom: 8px; right: 32px; color: var(--ivory-dim); }
+@media (max-width: 520px) { .hud .meta span.x { display: none; } }
+
+/* Chapter captions over the scene */
+.cap-line { position: absolute; left: 0; right: 0; text-align: center; z-index: 5; pointer-events: none; opacity: 0; }
+.cap-line p { margin: 0 auto; max-width: 22ch; font-family: var(--f-display); font-style: italic; font-size: clamp(26px, 4vw, 44px); line-height: 1.1; text-wrap: balance; }
+.cap-line small { display: block; margin-top: 12px; font-family: var(--f-mono); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--ivory-dim); }
+#capRec { bottom: 12%; }
+#capOut { top: 50%; transform: translateY(-50%); }
+#fade { position: absolute; inset: 0; background: var(--black); opacity: 0; z-index: 4; pointer-events: none; }
+
+/* Reading sections */
+section.read { max-width: 1200px; margin: 0 auto; padding-block: 96px 24px; }
+.eyebrow { font-size: 10px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--ivory-dim); margin: 0 0 14px; }
+section.read h2 { font-family: var(--f-display); font-style: italic; font-weight: 400; font-size: clamp(28px, 4vw, 44px); line-height: 1.08; margin: 0 0 36px; max-width: 20ch; text-wrap: balance; }
+.grid6 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.svc { padding: 22px 22px 26px 0; border-bottom: 1px solid var(--line); display: grid; gap: 8px; align-content: start; min-width: 0; }
+.svc + .svc { padding-left: 22px; border-left: 1px solid var(--line); }
+.svc:nth-child(4) { padding-left: 0; border-left: 0; }
+.svc header { display: flex; align-items: center; gap: 10px; }
+.svc svg { width: 28px; height: auto; flex: none; }
+.svc h3 { margin: 0; font-size: 15px; font-weight: 600; }
+.svc p { margin: 0; color: var(--ivory-dim); font-size: 14px; max-width: 40ch; }
+.svc .tag { font-family: var(--f-mono); font-size: 10px; letter-spacing: .1em; color: var(--rec); text-transform: uppercase; }
+.svc .tag.quiet { color: var(--ivory-dim); }
+@media (max-width: 860px) {
+  .grid6 { grid-template-columns: 1fr; }
+  .svc, .svc + .svc, .svc:nth-child(4) { padding: 20px 0; border-left: 0; }
+}
+.work { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.case { border: 1px solid var(--line); padding: 20px; display: grid; gap: 10px; align-content: start; min-width: 0; background: var(--ink-2); }
+.case .kind { font-family: var(--f-mono); font-size: 10px; letter-spacing: .12em; color: var(--ivory-dim); text-transform: uppercase; }
+.case h3 { margin: 0; font-size: 16px; font-weight: 600; }
+.case p { margin: 0; color: var(--ivory-dim); font-size: 14px; }
+@media (max-width: 860px) { .work { grid-template-columns: 1fr; } }
+.contact { display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: end; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 28px; }
+.contact p { margin: 0; color: var(--ivory-dim); max-width: 46ch; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 20px; background: var(--ivory); color: var(--black); text-decoration: none; font-weight: 600; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; border: 0; cursor: pointer; font-family: var(--f-ui); }
+.btn i { width: 8px; height: 8px; background: var(--rec); }
+.note { font-family: var(--f-mono); font-size: 11px; color: var(--ivory-dim); }
+footer.foot { max-width: 1200px; margin: 0 auto; padding-block: 64px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-family: var(--f-mono); font-size: 10px; letter-spacing: .14em; color: var(--ivory-dim); text-transform: uppercase; }
+
+/* Reduced motion: no pinned journey; the opening frame stays as a static hero */
+@media (prefers-reduced-motion: reduce) {
+  .journey { height: auto; }
+  .stage { position: relative; height: auto; display: flex; flex-direction: column; }
+  .scene-wrap { position: relative; inset: auto; height: 360px; margin-top: 56px; }
+  .intro { position: relative; }
+  #scene { transform: none !important; }
+  .hud, .cap-line, #fade, .hint { display: none; }
+  .pc-in { animation: none; }
+}
+</style>
+
+<div class="top gutter">
+  <div class="top-in">
+    <a class="brand" href="#top" aria-label="Vieira Creations, back to start">
+      <svg viewBox="0 0 624 400" aria-hidden="true"><g id="miniMark"></g></svg>
+      <span>VIEIRA CREATIONS</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a class="cta" href="#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<div class="journey" id="top">
+  <div class="stage">
+    <div class="scene-wrap">
+      <svg id="scene" viewBox="-500 -430 1000 860" preserveAspectRatio="xMidYMid meet" role="img" aria-label="The VI symbol: six pieces that become a camera's recording light">
+        <defs>
+          <radialGradient id="glassG" cx="38%" cy="34%" r="75%">
+            <stop offset="0" stop-color="#5a3a30"/>
+            <stop offset=".3" stop-color="#1f1715"/>
+            <stop offset="1" stop-color="#050505"/>
+          </radialGradient>
+          <radialGradient id="glowG">
+            <stop offset="0" stop-color="#FF4D24" stop-opacity=".55"/>
+            <stop offset="1" stop-color="#FF4D24" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="flareG" x1="0" x2="1">
+            <stop offset="0" stop-color="#FF4D24" stop-opacity="0"/>
+            <stop offset=".5" stop-color="#FF4D24" stop-opacity=".5"/>
+            <stop offset="1" stop-color="#FF4D24" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <g id="camera" class="camera" opacity="0">
+          <g id="camLines"></g>
+        </g>
+        <g id="vi"></g>
+      </svg>
+    </div>
+
+      <div class="hud" id="hud" aria-hidden="true">
+        <span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span>
+        <div class="rec"><i></i>REC</div>
+        <div class="tc" id="tc">00:00:00:00</div>
+        <div class="meta">T1.5 · ISO 800 <span class="x">· 24 FPS · 180°</span></div>
+        <div class="cap">CH 01</div>
+      </div>
+      <div class="cap-line" id="capRec"><p>Every story starts recording somewhere.</p><small>Chapter 01 · Vision</small></div>
+      <div class="cap-line" id="capOut"><p>Every story starts with a look.</p><small>Next · Chapter 02 · The lens</small></div>
+      <div id="fade"></div>
+
+    <div class="intro gutter" id="intro">
+      <div>
+        <h1>Vision that creates. <em>Intelligence that connects.</em></h1>
+        <p class="lead">A London creative studio for brands and small businesses: films and content made with AI, websites that sell, and automation that answers for you.</p>
+      </div>
+      <div class="menu" aria-label="Services">
+        <div>
+          <h2><b>V</b> · Vision</h2>
+          <ul>
+            <li><a href="#svc-identity" data-piece="0"><i></i>Identity &amp; Brand</a></li>
+            <li><a href="#svc-video" data-piece="1"><i></i>AI Video<small>Core</small></a></li>
+            <li><a href="#svc-social" data-piece="2"><i></i>Social Content<small>Core</small></a></li>
+          </ul>
+        </div>
+        <div>
+          <h2><b>I</b> · Intelligence</h2>
+          <ul>
+            <li><a href="#svc-web" data-piece="3"><i></i>Websites<small>Core</small></a></li>
+            <li><a href="#svc-auto" data-piece="4"><i></i>Automation</a></li>
+            <li><a href="#svc-agents" data-piece="5"><i></i>AI Agents</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="hint" id="hint">Scroll to roll camera</div>
+    </div>
+  </div>
+</div>
+
+<main class="gutter">
+  <section class="read" id="services">
+    <p class="eyebrow">Six pieces, six services</p>
+    <h2>The V is how it looks. The I is how it works.</h2>
+    <div class="grid6">
+      <article class="svc" id="svc-identity"><header><svg viewBox="0 0 624 400" aria-hidden="true" data-mini="0"></svg><h3>Identity &amp; Brand</h3></header><p>Logo, palette, type and a short brand guide your team can follow.</p><span class="tag quiet">Add-on</span></article>
+      <article class="svc" id="svc-video"><header><svg viewBox="0 0 624 400" aria-hidden="true" data-mini="1"></svg><h3>AI Video</h3></header><p>Product films, ads and series made with AI, directed like cinema. Results on real people are always filmed for real.</p><span class="tag">Core service</span></article>
+      <article class="svc" id="svc-social"><header><svg viewBox="0 0 624 400" aria-hidden="true" data-mini="2"></svg><h3>Social Content</h3></header><p>Monthly Reels, TikToks and carousels edited with a hook in the first two seconds.</p><span class="tag">Core service</span></article>
+      <article class="svc" id="svc-web"><header><svg viewBox="0 0 624 400" aria-hidden="true" data-mini="3"></svg><h3>Websites &amp; Landing Pages</h3></header><p>New sites, redesigns and campaign pages built to load fast on a phone.</p><span class="tag">Core service</span></article>
+      <article class="svc" id="svc-auto"><header><svg viewBox="0 0 624 400" aria-hidden="true" data-mini="4"></svg><h3>Automation &amp; Funnels</h3></header><p>Comment a word, get the link, book a call. Your follow-up runs on its own.</p><span class="tag quiet">Add-on</span></article>
+      <article class="svc" id="svc-agents"><header><svg viewBox="0 0 624 400" aria-hidden="true" data-mini="5"></svg><h3>AI Agents</h3></header><p>An assistant that answers common questions day and night and hands people to you.</p><span class="tag quiet">Add-on</span></article>
+    </div>
+  </section>
+
+  <section class="read" id="work">
+    <p class="eyebrow">Work</p>
+    <h2>First projects, in production.</h2>
+    <div class="work">
+      <article class="case"><span class="kind">Website · Film</span><h3>This website</h3><p>The journey you just scrolled through, built in the open as case 01.</p></article>
+      <article class="case"><span class="kind">Website · London clinic</span><h3>Aesthetics clinic</h3><p>Redesign with connected page transitions and a booking-first layout.</p></article>
+      <article class="case"><span class="kind">Campaign · Haircare</span><h3>UK launch campaign</h3><p>Product film, a four-part Reels series and a landing page for salons.</p></article>
+    </div>
+  </section>
+
+  <section class="read" id="contact">
+    <p class="eyebrow">Contact</p>
+    <h2>Let's create yours.</h2>
+    <div class="contact">
+      <p>Tell us what you are launching. We reply within one working day with a first idea and a starting price.</p>
+      <div style="display:grid;gap:10px;justify-items:start">
+        <a class="btn" href="#contact"><i></i>Start a project</a>
+        <span class="note">Prototype: WhatsApp and booking connect at launch.</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot gutter">
+  <span>Vieira Creations · London</span>
+  <span>Prototype · Chapter 01 · 28 Oct 2026</span>
+</footer>
+
+<script>
+(() => {
+  // ---- VI geometry (same constants as brand/tools/build_logo.py) ----
+  const H = 400, ARM = 120, S = 240 / H, CUT = 140, GAP = 16, TIP = 13, IX = 520, IW = 104, VX = 480;
+  const y2 = CUT + GAP, inner = ARM / S, ty = H - TIP, bh = (H - 2 * GAP) / 3;
+  const P = [
+    [[0,0],[ARM,0],[ARM+CUT*S,CUT],[CUT*S,CUT]],                                    // V left arm
+    [[VX-ARM,0],[VX,0],[VX-CUT*S,CUT],[VX-ARM-CUT*S,CUT]],                          // V right arm
+    [[y2*S,y2],[ARM+y2*S,y2],[240,inner],[VX-ARM-y2*S,y2],[VX-y2*S,y2],[240+(H-ty)*S,ty],[240-(H-ty)*S,ty]], // V base
+    [[IX,0],[IX+IW,0],[IX+IW,bh],[IX,bh]],                                          // I top (REC)
+    [[IX,bh+GAP],[IX+IW,bh+GAP],[IX+IW,2*bh+GAP],[IX,2*bh+GAP]],                     // I middle
+    [[IX,2*(bh+GAP)],[IX+IW,2*(bh+GAP)],[IX+IW,H],[IX,H]]                            // I bottom
+  ];
+  const d = pts => "M" + pts.map(p => p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" L") + "Z";
+  const NS = "http://www.w3.org/2000/svg";
+  const mk = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+  const IVORY = "#F4EFE6", REC = "#FF4D24", DIM = "#2A2826";
+
+  // mini marks (header + service cards)
+  P.forEach(p => mk("path", { d: d(p), fill: IVORY }, document.getElementById("miniMark")));
+  document.querySelectorAll("svg[data-mini]").forEach(svg => {
+    const on = +svg.dataset.mini;
+    P.forEach((p, i) => mk("path", { d: d(p), fill: i === on ? REC : DIM }, svg));
+  });
+
+  // ---- Scene: VI centred at origin ----
+  const OX = -312, OY = -200;                     // mark is 624 x 400
+  const vi = document.getElementById("vi");
+  const recC = [IX + IW / 2 + OX, bh / 2 + OY];   // REC block centre in scene units
+  const glow = mk("circle", { cx: recC[0], cy: recC[1], r: 150, fill: "url(#glowG)", opacity: 0 }, vi);
+  const spread = [[-34,-22],[34,-22],[0,30],[44,-26],[50,0],[44,26]];
+  const enter  = [[-90,-60],[90,-60],[0,90],[120,-80],[140,0],[120,80]];
+  const pieces = P.map((p, i) => {
+    const outer = mk("g", {}, vi);
+    const path = mk("path", { d: d(p.map(q => [q[0] + OX, q[1] + OY])), fill: IVORY, class: "pc pc-in" }, outer);
+    path.style.setProperty("--fx", enter[i][0] + "px");
+    path.style.setProperty("--fy", enter[i][1] + "px");
+    path.style.setProperty("--d", (i * 70) + "ms");
+    return { outer, path };
+  });
+
+  // ---- Camera, front view, lens centred at (0, 20); tally light at (170, -138) ----
+  const cam = document.getElementById("camLines");
+  const LC = [0, 20], TALLY = [176, -132];
+  const draw = [];
+  const line = (tag, a, cls) => { const e = mk(tag, Object.assign({ pathLength: 1 }, a), cam); if (cls) e.setAttribute("class", cls); draw.push(e); return e; };
+  line("rect", { x: -250, y: -165, width: 500, height: 370, rx: 22 });                 // body
+  line("path", { d: "M-170,-165 V-214 H170 V-165" });                                    // top handle
+  line("path", { d: "M-120,-214 V-232 H120 V-214" }, "fine");                            // handle grip
+  line("rect", { x: TALLY[0] - 20, y: TALLY[1] - 21, width: 40, height: 42, rx: 5 }, "fine"); // tally housing
+  line("circle", { cx: LC[0], cy: LC[1], r: 158 });                                      // lens mount
+  line("circle", { cx: LC[0], cy: LC[1], r: 136 }, "fine");                              // focus ring
+  line("circle", { cx: LC[0], cy: LC[1], r: 112 });                                      // barrel
+  for (let k = 0; k < 36; k++) {                                                         // focus scale ticks
+    const a = k / 36 * Math.PI * 2, r1 = 138, r2 = k % 3 ? 146 : 152;
+    line("path", { d: `M${(LC[0]+Math.cos(a)*r1).toFixed(1)},${(LC[1]+Math.sin(a)*r1).toFixed(1)} L${(LC[0]+Math.cos(a)*r2).toFixed(1)},${(LC[1]+Math.sin(a)*r2).toFixed(1)}` }, "fine");
+  }
+  const glass = mk("g", { opacity: 0 }, cam);
+  mk("circle", { cx: LC[0], cy: LC[1], r: 92, fill: "url(#glassG)", class: "glass" }, glass);
+  mk("ellipse", { cx: LC[0] - 30, cy: LC[1] - 36, rx: 34, ry: 14, fill: "#F4EFE6", opacity: .12, transform: `rotate(-30 ${LC[0]-30} ${LC[1]-36})`, class: "glass" }, glass);
+  mk("circle", { cx: LC[0] + 38, cy: LC[1] + 30, r: 6, fill: "#FF4D24", opacity: .5, class: "glass" }, glass);
+  line("circle", { cx: LC[0], cy: LC[1], r: 92 });                                       // front element
+  const blades = Array.from({ length: 6 }, (_, k) => { const a = k / 6 * Math.PI * 2 + .3; return [LC[0] + Math.cos(a) * 34, LC[1] + Math.sin(a) * 34]; });
+  line("path", { d: d(blades) }, "fine");                                                // aperture
+  const flare = mk("rect", { x: -260, y: LC[1] - 1.5, width: 520, height: 3, fill: "url(#flareG)", opacity: 0, class: "glass" }, cam);
+  line("circle", { cx: -212, cy: -128, r: 6 }, "fine");
+  line("circle", { cx: -212, cy: 168, r: 6 }, "fine");
+  line("circle", { cx: 212, cy: 168, r: 6 }, "fine");
+  const label = mk("text", { x: -232, y: 192 }, cam); label.textContent = "VC-01 · T1.5";
+  draw.forEach(e => { e.style.strokeDasharray = 1; e.style.strokeDashoffset = 1; });
+
+  // ---- Scroll mapping ----
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+  const journey = document.querySelector(".journey");
+  const els = {
+    camera: document.getElementById("camera"), intro: document.getElementById("intro"), hint: document.getElementById("hint"),
+    hud: document.getElementById("hud"), tc: document.getElementById("tc"),
+    capRec: document.getElementById("capRec"), capOut: document.getElementById("capOut"), fade: document.getElementById("fade"), scene: document.getElementById("scene")
+  };
+  const clamp = v => Math.max(0, Math.min(1, v));
+  const ease = t => t * t * (3 - 2 * t);
+  const seg = (p, a, b) => ease(clamp((p - a) / (b - a)));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const mix = (c1, c2, t) => { const h = c => [1,3,5].map(i => parseInt(c.slice(i, i + 2), 16)); const A = h(c1), B = h(c2); return "rgb(" + A.map((v, i) => Math.round(lerp(v, B[i], t))).join(",") + ")"; };
+  let hover = -1, introH = 0;
+  const measure = () => { introH = reduce.matches ? 0 : els.intro.offsetHeight; };
+  measure();
+
+  function render(p) {
+    const spreadK = seg(p, .04, .2) - seg(p, .28, .4);
+    const rec = seg(p, .2, .3);
+    const shrink = seg(p, .4, .58);
+    const camIn = seg(p, .5, .7);
+    const zoom = seg(p, .72, .94);
+
+    // VI pieces: spread in depth, regroup, REC lights, then the rest fade as it shrinks
+    pieces.forEach((pc, i) => {
+      const [sx, sy] = spread[i];
+      const sc = 1 + (i % 2 ? .04 : -.03) * spreadK;
+      pc.outer.setAttribute("transform", `translate(${sx * spreadK},${sy * spreadK}) scale(${sc})`);
+      if (i === 3) {
+        pc.path.style.fill = mix(IVORY, REC, Math.max(rec, hover === 3 ? 1 : 0));
+      } else {
+        pc.path.style.fill = hover === i && p < .1 ? REC : IVORY;
+        pc.outer.setAttribute("opacity", clamp(1 - shrink * 1.8).toFixed(3));
+      }
+    });
+    glow.setAttribute("opacity", (rec * (1 - .6 * shrink) * (1 - zoom)).toFixed(3));
+
+    // Fly the REC block into the camera's tally light
+    const s = lerp(1, .17, shrink);
+    const tx = lerp(recC[0], TALLY[0], shrink), tyy = lerp(recC[1], TALLY[1], shrink);
+    const z = lerp(1, 16, zoom * zoom);
+    const zoomT = `translate(${LC[0]},${LC[1]}) scale(${z}) translate(${-LC[0]},${-LC[1]})`;
+    vi.setAttribute("transform", `${zoomT} translate(${tx},${tyy}) scale(${s}) translate(${-recC[0]},${-recC[1]})`);
+
+    // Camera draws itself, then we push into the lens
+    els.camera.setAttribute("opacity", Math.min(1, camIn * 1.6).toFixed(3));
+    draw.forEach(e => e.style.strokeDashoffset = (1 - camIn).toFixed(3));
+    glass.setAttribute("opacity", (camIn * .9).toFixed(3));
+    flare.setAttribute("opacity", (seg(p, .62, .72) * (1 - seg(p, .8, .9))).toFixed(3));
+    els.camera.setAttribute("transform", zoomT);
+
+    // Overlays
+    const introK = 1 - seg(p, .015, .16);
+    els.intro.style.opacity = (1 - seg(p, .015, .1)).toFixed(3);
+    els.scene.style.transform = `translateY(${(-introH / 2 * introK).toFixed(1)}px)`;
+    els.intro.style.pointerEvents = p > .06 ? "none" : "";
+    els.hint.style.opacity = (1 - seg(p, 0, .03)).toFixed(3);
+    const hudO = seg(p, .22, .3) * (1 - seg(p, .86, .92));
+    els.hud.style.opacity = hudO.toFixed(3);
+    els.capRec.style.opacity = (seg(p, .24, .3) * (1 - seg(p, .38, .44))).toFixed(3);
+    els.fade.style.opacity = seg(p, .86, .94).toFixed(3);
+    els.capOut.style.opacity = seg(p, .9, .97).toFixed(3);
+
+    // Timecode runs only while recording (24 fps)
+    const secs = Math.max(0, (p - .22) / .7) * 14;
+    const fr = Math.floor(secs * 24);
+    const pad = n => String(n).padStart(2, "0");
+    els.tc.textContent = `00:00:${pad(Math.floor(fr / 24))}:${pad(fr % 24)}`;
+  }
+
+  function progress() {
+    const r = journey.getBoundingClientRect();
+    const span = journey.offsetHeight - innerHeight;
+    return span > 0 ? clamp(-r.top / span) : 0;
+  }
+  let raf = 0;
+  const tick = () => { raf = 0; render(reduce.matches ? 0 : progress()); };
+  const ask = () => { if (!raf) raf = requestAnimationFrame(tick); };
+  addEventListener("scroll", ask, { passive: true });
+  addEventListener("resize", () => { measure(); ask(); });
+  reduce.addEventListener?.("change", ask);
+
+  // Service menu lights its piece of the VI
+  document.querySelectorAll(".menu a").forEach(a => {
+    const i = +a.dataset.piece;
+    const on = () => { hover = i; a.classList.add("on"); ask(); };
+    const off = () => { hover = -1; a.classList.remove("on"); ask(); };
+    a.addEventListener("mouseenter", on); a.addEventListener("focus", on);
+    a.addEventListener("mouseleave", off); a.addEventListener("blur", off);
+  });
+
+  render(0);
+})();
+</script>
